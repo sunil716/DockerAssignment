@@ -1,0 +1,29 @@
+version : "3"
+services :
+  q1-html : 
+    build : ./Question01
+    image : sunilgv/q1-html:latest
+    ports :
+      - 9090:80
+    volumes :
+      - volume-1:/usr/local/apache2/htdocs
+    networks :
+      - network-1
+
+  q2-jar : 
+    build : ./Question02
+    image : sunilgv/q2-jar:latest
+    ports :
+      - 9095:9095
+    volumes :
+      - volume-2:/app
+    networks :
+      - network-2
+
+volumes :
+  volume-1 :
+  volume-2 :
+
+networks :
+  network-1 :
+  network-2 :

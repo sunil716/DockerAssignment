@@ -1,0 +1,52 @@
+Answers to Questions 4 to 14:
+
+Question-04:
+
+A Dockerfile is a script where we can write instructions to build a Docker Image
+A Docker image is a package or template that contains all the necessary files, libraries, and dependencies required to run an application. It is created by using the instructions specified in the Dockerfile. We can run Docker images on different hosts or machines.
+A Docker container is an instance of a Docker image. They are isolated and have their own dependencies and libraries. We can run multiple containers from the same Docker image, and each container runs in its own isolated environment.
+
+Question-05:
+
+Both a volume mount and a bind mount are ways to share data between the host machine and a Docker container.
+Volume mount : Here Docker creates a new directory within Docker’s storage directory on the host machine, and Docker manages that directory’s contents.
+Bind Mount : Here a file or directory is mounted on to your container from our host machine, we can then reference it via its absolute path. This is a little dangerous as the container will have acces to files/folder from our storage they can be modified/deleted.
+
+Question-06
+
+Volume and bind mounts allow us to share data between containers and between the host machine.  By using volume or bind mounts, we can store data outside of the container, in this way we can have the container's data even after the container is deleted or recreated. 
+
+Question-07:
+
+Publishing a port in Docker means exposing a network port from the container to the host machine. For example, if we have a web server running inside a Docker container on port 80, we can publish port 80 to port 8080 on the host machine. This would allow users to access the web server by visiting the IP address of the host machine on port 8080. All traffic at port 8080 on host machine will be routed to container.
+
+Question-08:
+
+Docker daemon is a part of docker engine. It is a background process that manages docker objects such as the images, containers, volumes and networks etc... 
+
+Question-09:
+
+No, the root user in a Docker container does not have the same privileges as the root user on the host machine. Docker containers run with a limited set of privileges and are isolated from the host machine. Even if we run a container as the root user, it does not have access to the host machine's kernel or other system resources.
+
+Question-10:
+
+No, the root user in a Docker container does not have the same privileges as the root user on the host machine. Docker container runs in its own isolated environment. The root user within the container only has administrative privileges within the container's isolated environment but not for hot system. The root user in the container cannot access or modify files outside of the container
+
+Question-11:
+
+The processes that you run inside a Docker container run within the container's isolated environment. Docker uses a containerization technology that uses kernel of host system to create containers which are isolated. When we start a process inside a Docker container, it runs within the container's process namespace, isolated from the host machine's process namespace.
+Since the docker is running on host machine so the containers are indirectly running on host machine.
+
+Question-12:
+
+Each Virtual Machine runs its own operating system, and they share the underlying hardware resources. Docker, uses containerization to isolate applications, sharing the kernel of the host operating system. Docker containers are much smaller and faster to start up and shut down than VMs.
+VMs Consume higher disk space comparing to Docker .
+Docker has less isolation as more resources are shared between the containers like kernal. VMs are completely isolates since they don't rely on underlying OS or Kernal.
+
+Question-13:
+
+Running a container as privileged means that the container will have the same level of access to the host system as the host itself. It will have access to all the devices on the host system. Running a container in privileged mode can be useful in some situations but at the same time it can make the host system vulnerable, if the container gets compromised by an hacker then it will be a big problem as the hacker can access our host system as a privileged usser.
+
+Question-14:
+
+Docker in Docker (DIND) is a technique that enables us to run a Docker container inside another Docker container. Inorder to achieve this we need to create a new Docker container that includes the Docker executable and configuration files. This container is then used as a base image to create other containers that will can run our application or perform other tasks.
